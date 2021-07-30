@@ -86,6 +86,35 @@ class DBSystem
         }
         return gold;
     }
+    public GetUserInfo GetUserInfo(int twitchId)
+    {
+        GetUserInfo gui = new GetUserInfo();
+        using var command = new MySqlCommand("SELECT * FROM players WHERE twitchid=" + twitchId  + ";", connection);
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+        
+            gui.twitchID = (int)reader.GetValue(1);
+            gui.displayName = (string)reader.GetValue(2);
+            gui.avatarURL = (string)reader.GetValue(3);
+            gui.gold = (int)reader.GetValue(4);
+        }
+        return gui;
+    }
+    public NewsInfo GetNewsInfo()
+    {
+        NewsInfo newsInfo = new NewsInfo();
+        using var command = new MySqlCommand("SELECT * FROM news;", connection);
+        using var reader = command.ExecuteReader();
+       while (reader.Read())
+        {
+            newsInfo.id = (int)reader.GetValue(0);
+            newsInfo.title = (string)reader.GetValue(1);
+            newsInfo.content = (string)reader.GetValue(2);
+            newsInfo.date = (DateTime)reader.GetValue(3);
+        }
+        return newsInfo;
+    }
     public void Test()
     {
    
