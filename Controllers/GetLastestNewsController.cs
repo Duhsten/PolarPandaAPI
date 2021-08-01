@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace PolarPandaWebAPI.Controllers
 {
+    
     [ApiController]
     [Route("[controller]")]
     public class GetLatestNewsController : ControllerBase
@@ -18,7 +19,7 @@ namespace PolarPandaWebAPI.Controllers
         {
             _logger = logger;
         }
-
+        
         [HttpGet()]
         public IEnumerable<NewsInfo> Get()
         {

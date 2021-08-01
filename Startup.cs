@@ -17,6 +17,8 @@ namespace PolarPandaAPI
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,6 +35,17 @@ namespace PolarPandaAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PolarPandaAPI", Version = "v1" });
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                              builder =>
+                              {
+                                  builder.WithOrigins("https://20.62.161.245/",
+                                                      "https://weboverlay.azurewebsites.net/")
+                                                    .AllowAnyHeader()
+                                                    .AllowAnyMethod();
+                              });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +59,7 @@ namespace PolarPandaAPI
             }
 
             app.UseRouting();
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
