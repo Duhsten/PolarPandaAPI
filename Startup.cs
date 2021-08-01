@@ -44,7 +44,9 @@ namespace PolarPandaAPI
                                                       "https://weboverlay.azurewebsites.net/")
                                                     .AllowAnyHeader()
                                                     .AllowAnyMethod()
-                                                    .WithExposedHeaders("x-custom-header");
+                                                    .WithExposedHeaders("x-custom-header")
+                                                    .AllowCredentials()
+                                                    .WithMethods("PUT", "DELETE", "GET");
                               });
             });
         }
