@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
 using PolarPandaWebAPI;
-
+using Microsoft.Net.Http.Headers;
 namespace PolarPandaAPI
 {
     public class Startup
@@ -43,7 +43,8 @@ namespace PolarPandaAPI
                                   builder.WithOrigins("https://20.62.161.245/",
                                                       "https://weboverlay.azurewebsites.net/")
                                                     .AllowAnyHeader()
-                                                    .AllowAnyMethod();
+                                                    .AllowAnyMethod()
+                                                    .WithHeaders(HeaderNames.ContentType, "x-custom-header");
                               });
             });
         }
