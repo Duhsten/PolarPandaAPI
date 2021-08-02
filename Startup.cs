@@ -43,13 +43,11 @@ namespace PolarPandaAPI
                 options.AddPolicy(name: "PlrPolicy",
                               builder =>
                               {
-                                  builder.WithOrigins("https://20.62.161.245/",
-                                                      "https://weboverlay.azurewebsites.net/")
+                                  builder
                                                     .AllowAnyHeader()
                                                     .AllowAnyOrigin()
                                                     .AllowAnyMethod()
                                                     .WithExposedHeaders("x-custom-header")
-                                                    .AllowCredentials()
                                                     .WithMethods("PUT", "DELETE", "GET");
                               });
             });
