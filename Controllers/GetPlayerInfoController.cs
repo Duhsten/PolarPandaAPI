@@ -9,7 +9,7 @@ namespace PolarPandaWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class GetUserInfoController : ControllerBase
+    public class GetPlayerInfoController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
@@ -18,28 +18,21 @@ namespace PolarPandaWebAPI.Controllers
 
         private readonly ILogger<GetUserGoldController> _logger;
 
-        public GetUserInfoController(ILogger<GetUserGoldController> logger)
+        public GetPlayerInfoController(ILogger<GetUserGoldController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<GetUserInfo> Get(int id)
+        public GetPlayerInfo Get(int id)
         {
             DBSystem db = new DBSystem();
             db.OpenConnection();
-            GetUserInfo result = db.GetUserInfo(id);
+            GetPlayerInfo result = db.GetUserInfo(id);
             db.CloseConnection();
-           var rng = new Random();
+          
            
-            return Enumerable.Range(1, 1).Select(index => new GetUserInfo
-            {
-                twitchID = result.twitchID,
-                displayName = result.displayName,
-                avatarURL = result.avatarURL,
-                gold = result.gold
-            })
-            .ToArray();
+            return result;
         }
     }
 }

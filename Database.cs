@@ -86,9 +86,9 @@ class DBSystem
         }
         return gold;
     }
-    public GetUserInfo GetUserInfo(int twitchId)
+    public GetPlayerInfo GetUserInfo(int twitchId)
     {
-        GetUserInfo gui = new GetUserInfo();
+        GetPlayerInfo gui = new GetPlayerInfo();
         using var command = new MySqlCommand("SELECT * FROM players WHERE twitchid=" + twitchId  + ";", connection);
         using var reader = command.ExecuteReader();
         while (reader.Read())
