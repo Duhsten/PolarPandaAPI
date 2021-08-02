@@ -24,15 +24,21 @@ namespace PolarPandaWebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public GetPlayerInfo Get(int id)
+        public Object Get(int id)
         {
             DBSystem db = new DBSystem();
             db.OpenConnection();
             GetPlayerInfo result = db.GetUserInfo(id);
             db.CloseConnection();
-          
-           
-            return result;
+            if(result.twitchID == 0)
+            {
+                return "Invalid ID";
+            }          
+           else
+           {
+                return result;
+           }
+            
         }
     }
 }
