@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace PolarPandaWebAPI.Controllers
 {
+    
     [EnableCors("_myAllowSpecificOrigins")]
     [ApiController]
     [Route("[controller]")]
