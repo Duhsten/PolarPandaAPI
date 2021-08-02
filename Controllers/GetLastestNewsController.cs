@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 namespace PolarPandaWebAPI.Controllers
 {
     
-    [EnableCors("PlrPolicy")]
+    [DisableCors]
     [ApiController]
     [Route("[controller]")]
     public class GetLatestNewsController : ControllerBase
