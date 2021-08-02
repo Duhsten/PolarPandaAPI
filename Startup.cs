@@ -46,6 +46,7 @@ namespace PolarPandaAPI
                                   builder.WithOrigins("https://20.62.161.245/",
                                                       "https://weboverlay.azurewebsites.net/")
                                                     .AllowAnyHeader()
+                                                    .AllowAnyOrigin()
                                                     .AllowAnyMethod()
                                                     .WithExposedHeaders("x-custom-header")
                                                     .AllowCredentials()
