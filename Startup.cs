@@ -23,7 +23,7 @@ namespace PolarPandaAPI
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Starting Polar Panda API");
-            Console.ForegroundColor = ConsoleColor.Whitedd;
+            Console.ForegroundColor = ConsoleColor.White;
             Configuration = configuration;
  
         }
