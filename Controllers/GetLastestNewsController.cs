@@ -23,23 +23,14 @@ namespace PolarPandaWebAPI.Controllers
         }
         
         [HttpGet()]
-        public IEnumerable<NewsInfo> Get()
-        {
-            DBSystem db = new DBSystem();
+       public NewsInfo Get()
+{        DBSystem db = new DBSystem();
             db.OpenConnection();
             NewsInfo newsResult = db.GetNewsInfo();
             db.CloseConnection();
-           var rng = new Random();
-            return Enumerable.Range(1, 1).Select(index => new NewsInfo
-            {
-                title = newsResult.title,
-                content = newsResult.content,
-                date = newsResult.date
-                
-                    
-                
-            })
-            .ToArray();
-        }
+        return newsResult;
+}
+ 
+
     }
 }
