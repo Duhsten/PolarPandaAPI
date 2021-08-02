@@ -40,7 +40,7 @@ namespace PolarPandaAPI
             });
             services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
+                options.AddPolicy(name: "PlrPolicy",
                               builder =>
                               {
                                   builder.WithOrigins("https://20.62.161.245/",
@@ -65,7 +65,7 @@ namespace PolarPandaAPI
             }
 
             app.UseRouting();
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors("PlrPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
