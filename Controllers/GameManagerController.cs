@@ -24,7 +24,12 @@ namespace PolarPandaWebAPI.Controllers
         public Object Get(string result)
         {
             GameManager gm = new GameManager();
-            if (result == "")
+            Game g = new Game(){
+                gameName = "test",
+                
+            };
+            gm.currentGame = g;
+            if (result == "retrieve")
             {
             
             return gm;
@@ -33,7 +38,7 @@ namespace PolarPandaWebAPI.Controllers
             {
                 return gm.status;
             }
-            else if ( result == "currentgame")
+            else if ( result == "   ")
             {
                 return gm.currentGame;
             }

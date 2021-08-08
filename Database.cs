@@ -15,6 +15,7 @@ class DBSystem
     public DBSystem()
     {
         Initialize();
+      
     }
 
     //Initialize values
@@ -86,9 +87,9 @@ class DBSystem
         }
         return gold;
     }
-    public GetPlayerInfo GetUserInfo(int twitchId)
+    public PlayerInfo GetUserInfo(int twitchId)
     {
-        GetPlayerInfo gui = new GetPlayerInfo();
+        PlayerInfo gui = new PlayerInfo();
         using var command = new MySqlCommand("SELECT * FROM players WHERE twitchid=" + twitchId  + ";", connection);
         using var reader = command.ExecuteReader();
         while (reader.Read())
@@ -100,6 +101,30 @@ class DBSystem
             gui.gold = (int)reader.GetValue(4);
         }
         return gui;
+    }
+      public bool UpdateUserInfo(PlayerInfo plyInfo)
+    {
+        int twitchID = 0;
+        using var command = new MySqlCommand("SELECT * FROM players WHERE twitchid=" + plyInfo.twitchID  + ";", connection);
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            
+            twitchID = (int)reader.GetValue(1);
+
+        }
+        if(twitchID == 0)
+        {
+         using var command2 = new MySqlCommand("INSERT INTO players WHERE twitchid=" + plyInfo.twitchID  + ", display_name=" + plyInfo.displayName + ", avatar_url=" + plyInfo.avatarURL + ", gold=" + plyInfo.gold + ";", connection);
+        using var reader2 = command2.ExecuteReader();
+        while (reader2.Read())
+        {
+            
+            twitchID = (int)reader2.GetValue(1);
+
+        } 
+        }
+       return true;
     }
     public NewsInfo GetNewsInfo()
     {

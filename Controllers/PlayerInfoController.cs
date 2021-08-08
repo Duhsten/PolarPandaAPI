@@ -9,16 +9,12 @@ namespace PolarPandaWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class GetPlayerInfoController : ControllerBase
+    public class PlayerInfoController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         private readonly ILogger<GetUserGoldController> _logger;
 
-        public GetPlayerInfoController(ILogger<GetUserGoldController> logger)
+        public PlayerInfoController(ILogger<GetUserGoldController> logger)
         {
             _logger = logger;
         }
@@ -28,7 +24,7 @@ namespace PolarPandaWebAPI.Controllers
         {
             DBSystem db = new DBSystem();
             db.OpenConnection();
-            GetPlayerInfo result = db.GetUserInfo(id);
+            PlayerInfo result = db.GetUserInfo(id);
             db.CloseConnection();
             if(result.twitchID == 0)
             {
@@ -40,5 +36,6 @@ namespace PolarPandaWebAPI.Controllers
            }
             
         }
+     
     }
 }
