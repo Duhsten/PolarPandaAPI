@@ -19,7 +19,7 @@ namespace PolarPandaWebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         public Object Get(int id)
         {
             DBSystem db = new DBSystem();
