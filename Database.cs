@@ -122,7 +122,7 @@ namespace PolarPandaWebAPI {
       }
       else if (twitchID == plyInfo.twitchID)
       {
-          string sqlString = "SET ";
+          string sqlString = "zSET ";
           if(displayName != "" && displayName != "null")
           {
               sqlString = sqlString + "display_name = '" + displayName + "', ";
