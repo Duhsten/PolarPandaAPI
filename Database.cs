@@ -118,7 +118,7 @@ class DBSystem
         {
             CloseConnection();
             OpenConnection();
-         using var command2 = new MySqlCommand("INSERT INTO players WHERE twitchid=" + plyInfo.twitchID  + ", display_name=" + plyInfo.displayName + ", avatar_url=" + plyInfo.avatarURL + ", gold=" + plyInfo.gold + ";", connection);
+         using var command2 = new MySqlCommand("INSERT INTO players WHERE twitchid=" + plyInfo.twitchID  + ", display_name='" + plyInfo.displayName + "', avatar_url='" + plyInfo.avatarURL + "', gold=" + plyInfo.gold + ";", connection);
         using var reader2 = command2.ExecuteReader();
         while (reader2.Read())
         {
