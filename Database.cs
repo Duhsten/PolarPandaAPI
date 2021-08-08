@@ -133,7 +133,7 @@ namespace PolarPandaWebAPI {
           }
          if(gold != plyInfo.gold)
           {
-              sqlString = sqlString + "gold = " + plyInfo.gold + "";
+              sqlString = sqlString + "gold = " + plyInfo.gold + ",";
           }
            string resultSQL = sqlString.TrimEnd(' ', ',' , '<');
                  CloseConnection();
