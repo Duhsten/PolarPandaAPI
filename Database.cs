@@ -135,7 +135,7 @@ namespace PolarPandaWebAPI {
           {
               sqlString = sqlString + "gold = " + plyInfo.gold + "";
           }
-           string resultSQL = sqlString.TrimEnd(' ', ',' , '<');
+           string resultSQL = sqlString.TrimEnd(' ', ',');
                  CloseConnection();
         OpenConnection();
         Console.WriteLine(sqlString);
