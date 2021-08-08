@@ -106,6 +106,7 @@ class DBSystem
     {
         int twitchID = 0;
         using var command = new MySqlCommand("SELECT * FROM players WHERE twitchid=" + plyInfo.twitchID  + ";", connection);
+        CloseConnection();
         using var reader = command.ExecuteReader();
         while (reader.Read())
         {
@@ -115,6 +116,7 @@ class DBSystem
         }
         if(twitchID == 0)
         {
+            OpenConnection();
          using var command2 = new MySqlCommand("INSERT INTO players WHERE twitchid=" + plyInfo.twitchID  + ", display_name=" + plyInfo.displayName + ", avatar_url=" + plyInfo.avatarURL + ", gold=" + plyInfo.gold + ";", connection);
         using var reader2 = command2.ExecuteReader();
         while (reader2.Read())
