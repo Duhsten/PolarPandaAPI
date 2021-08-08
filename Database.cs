@@ -122,7 +122,7 @@ namespace PolarPandaWebAPI {
       }
       else if (twitchID == plyInfo.twitchID)
       {
-          string sqlString = "zSET ";
+          string sqlString = "SET ";
           if(displayName != "" && displayName != "null")
           {
               sqlString = sqlString + "display_name = '" + displayName + "', ";
@@ -135,12 +135,12 @@ namespace PolarPandaWebAPI {
           {
               sqlString = sqlString + "gold = " + gold + "";
           }
-            sqlString.TrimEnd(' ', ',' , '<');
+           string resultSQL = sqlString.TrimEnd(' ', ',' , '<');
                  CloseConnection();
         OpenConnection();
         Console.WriteLine(sqlString);
         using
-        var command2 = new MySqlCommand("UPDATE players " + sqlString + " WHERE twitchid=" + twitchID + ";", connection);
+        var command2 = new MySqlCommand("UPDATE players " + resultSQL + " WHERE twitchid=" + twitchID + ";", connection);
         using
         var reader2 = command2.ExecuteReader();
         while (reader2.Read()) {
