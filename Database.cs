@@ -125,15 +125,15 @@ namespace PolarPandaWebAPI {
           string sqlString = "SET ";
           if(displayName != "" && displayName != "null")
           {
-              sqlString = sqlString + "display_name = '" + displayName + "', ";
+              sqlString = sqlString + "'display_name' = '" + displayName + "', ";
           }
           if(avatar_url != "" && avatar_url != "null")
           {
-              sqlString = sqlString + "avatar_url = '" + avatar_url + "', ";
+              sqlString = sqlString + "'avatar_url' = '" + avatar_url + "', ";
           }
          if(gold != plyInfo.gold)
           {
-              sqlString = sqlString + "gold = " + gold + "";
+              sqlString = sqlString + "'gold' = '" + gold + "'";
           }
 
                  CloseConnection();
