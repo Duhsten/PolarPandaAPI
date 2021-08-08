@@ -140,7 +140,7 @@ namespace PolarPandaWebAPI {
         OpenConnection();
         Console.WriteLine(sqlString);
         using
-        var command2 = new MySqlCommand("UPDATE players " + sqlString + " WHERE twitchid= '" + twitchID + "';", connection);
+        var command2 = new MySqlCommand("UPDATE players " + sqlString + " WHERE twitchid=" + twitchID + ";", connection);
         using
         var reader2 = command2.ExecuteReader();
         while (reader2.Read()) {
