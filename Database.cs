@@ -123,11 +123,11 @@ namespace PolarPandaWebAPI {
       else if (twitchID == plyInfo.twitchID)
       {
           string sqlString = "SET ";
-          if(displayName != "" && displayName != null)
+          if(plyInfo.displayName != "" && plyInfo.displayName != null)
           {
               sqlString = sqlString + "display_name = '" + plyInfo.displayName + "', ";
           }
-          if(avatar_url != "" && avatar_url != null)
+          if(plyInfo.avatarURL != "" && plyInfo.avatarURL != null)
           {
               sqlString = sqlString + "avatar_url = '" + plyInfo.avatarURL + "', ";
           }
