@@ -133,14 +133,14 @@ namespace PolarPandaWebAPI {
           }
          if(gold != plyInfo.gold)
           {
-              sqlString = sqlString + "gold = " + plyInfo.gold + ",";
+              sqlString = sqlString + "gold = " + plyInfo.gold + "";
           }
            string resultSQL = sqlString.TrimEnd(' ', ',' , '<');
                  CloseConnection();
         OpenConnection();
         Console.WriteLine(sqlString);
         using
-        var command2 = new MySqlCommand("UPDATE players " + resultSQL + " WHERE twitchid=" + twitchID + ";", connection);
+        var command2 = new MySqlCommand("UPDATE players " + resultSQL + " WHERE twitchid = " + twitchID + ";", connection);
         using
         var reader2 = command2.ExecuteReader();
         while (reader2.Read()) {
