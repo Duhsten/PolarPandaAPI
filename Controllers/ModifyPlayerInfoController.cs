@@ -19,7 +19,7 @@ namespace PolarPandaWebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
+        [HttpPost("modify/")]
         public PlayerInfo Post(PlayerInfo playerInfo)
         {
             DBSystem db = new DBSystem();
