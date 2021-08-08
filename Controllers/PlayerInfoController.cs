@@ -38,7 +38,7 @@ namespace PolarPandaWebAPI.Controllers
         }
 
         [HttpPost]
-        public PlayerInfo Post(PlayerInfo playerInfo)
+        public Object Post(PlayerInfo playerInfo)
         {
             DBSystem db = new DBSystem();
             db.OpenConnection();
