@@ -20,7 +20,7 @@ namespace PolarPandaWebAPI.Controllers
         }
 
         [HttpPost("modify/")]
-        public PlayerInfo Post(PlayerInfo playerInfo)
+        public Object Post(PlayerInfo playerInfo)
         {
             DBSystem db = new DBSystem();
             db.OpenConnection();
@@ -30,7 +30,10 @@ namespace PolarPandaWebAPI.Controllers
            {
               
            }
-             return playerInfo;
+            Result result = new Result();
+            result.id = 200;
+            result.message = "Success";
+             return result;
         }
     }
 }
