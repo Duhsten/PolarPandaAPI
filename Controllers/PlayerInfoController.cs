@@ -24,7 +24,7 @@ namespace PolarPandaWebAPI.Controllers
         {
             DBSystem db = new DBSystem();
             db.OpenConnection();
-            PlayerInfo result = db.GetUserInfo(id);
+            Player result = db.GetUserInfo(id);
             db.CloseConnection();
             if(result.twitchID == 0)
             {
@@ -38,7 +38,7 @@ namespace PolarPandaWebAPI.Controllers
         }
 
         [HttpPost]
-        public PlayerInfo Post(PlayerInfo playerInfo)
+        public Player Post(Player playerInfo)
         {
             DBSystem db = new DBSystem();
             db.OpenConnection();

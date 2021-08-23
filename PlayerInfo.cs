@@ -2,7 +2,7 @@ using System;
 
 namespace PolarPandaWebAPI
 {
-    public class PlayerInfo
+    public class Player
     {
         public int twitchID {get; set;}
         public string displayName { get; set;}

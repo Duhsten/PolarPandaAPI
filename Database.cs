@@ -74,8 +74,8 @@ namespace PolarPandaWebAPI {
       }
       return gold;
     }
-    public PlayerInfo GetUserInfo(int twitchId) {
-      PlayerInfo gui = new PlayerInfo();
+    public Player GetUserInfo(int twitchId) {
+      Player gui = new Player();
       using
       var command = new MySqlCommand("SELECT * FROM players WHERE twitchid=" + twitchId + ";", connection);
       using
@@ -89,7 +89,7 @@ namespace PolarPandaWebAPI {
       }
       return gui;
     }
-    public bool UpdateUserInfo(PlayerInfo plyInfo) {
+    public bool UpdateUserInfo(Player plyInfo) {
       int twitchID = 0;
       string displayName = "";
       string avatar_url = "";
