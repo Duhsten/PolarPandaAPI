@@ -25,18 +25,6 @@ namespace PolarPandaWebAPI.Controllers
             
         }
 
-        [HttpPost]
-        public Player Post(Player playerInfo)
-        {
-            DBSystem db = new DBSystem();
-            db.OpenConnection();
-            bool test = db.UpdateUserInfo(playerInfo);
-            db.CloseConnection();
-           if (test)
-           {
-              
-           }
-             return playerInfo;
-        }
+        
     }
 }
