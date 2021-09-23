@@ -44,10 +44,6 @@ namespace PolarPandaWebAPI.Controllers
            }
             
         }
-    [HttpGet("retrievelist")]
-        public File GetFile(string id)
-        {
-            return File.
-}
+   
     }
 }
