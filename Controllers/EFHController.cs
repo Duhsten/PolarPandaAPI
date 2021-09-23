@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.IO;
 using PolarPandaAPI;
+using System.Web;
 
 namespace PolarPandaWebAPI.Controllers
 {
@@ -45,40 +46,14 @@ namespace PolarPandaWebAPI.Controllers
             
         }
         [HttpGet("files")]
-        public Object f()
-        {
-            PolarPandaAPI.File f1 = new PolarPandaAPI.File()
-            {
-                id = 45654,
-                fileName = "test",
-                filePath = "/33/3//3",
-                fileSize = 300
-            };
-            PolarPandaAPI.File f2 = new PolarPandaAPI.File()
-            {
-                id = 4566543,
-                fileName = "dfew3",
-                filePath = "/33/3//3",
-                fileSize = 300
-            };
-            PolarPandaAPI.File f3 = new PolarPandaAPI.File()
-            {
-                id = 45334,
-                fileName = "df33",
-                filePath = "/33/3//3",
-                fileSize = 300
-            };
-            List<PolarPandaAPI.File> f = new List<PolarPandaAPI.File>();
-            f.Add(f1);
-            f.Add(f2);
-            f.Add(f3);
-            Files files = new Files()
-            {
-                files = f
-            };
-            
-            return files;
-        }
-   
+public async Task<FileStreamResult> Download(int id)
+{
+    var path = "EFH/files.efh";
+    var stream = System.IO.File.OpenRead(path);
+    return new Microsoft.AspNetCore.Mvc.FileStreamResult(stream, "application/octet-stream")
+    {
+        FileDownloadName = "files.efh"
+    };
+}
     }
 }
