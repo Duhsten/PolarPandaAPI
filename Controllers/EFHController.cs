@@ -29,17 +29,17 @@ namespace PolarPandaWebAPI.Controllers
            string text = System.IO.File.ReadAllText(@"access");
            if(text.Equals("true"))
            {
-               Console.WriteLine("Access is set to True");
+               Console.WriteLine("Access is set to True!");
               return "true"; 
            }
            else if(text.Equals("false"))
            {
-               Console.WriteLine("Access is set to Locked");
+               Console.WriteLine("Access is set to Locked!");
               return "lock"; 
            }
            else
            {
-               Console.WriteLine("Access is Offline");
+               Console.WriteLine("Access is Offline!");
                return "false"; 
            }
             
