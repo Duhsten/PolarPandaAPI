@@ -10,6 +10,9 @@ using System.Net.Http.Headers;
 using System.IO;
 using PolarPandaAPI;
 using System.Web;
+using Microsoft.AspNetCore.Http;
+using System.Threading;
+
 
 namespace PolarPandaWebAPI.Controllers
 {
@@ -46,14 +49,83 @@ namespace PolarPandaWebAPI.Controllers
             
         }
         [HttpGet("files")]
-public async Task<FileStreamResult> Download(int id)
-{
-    var path = "EFH/files.efh";
-    var stream = System.IO.File.OpenRead(path);
-    return new Microsoft.AspNetCore.Mvc.FileStreamResult(stream, "application/octet-stream")
-    {
-        FileDownloadName = "files.efh"
-    };
-}
+        public async Task<FileStreamResult> Download(int id)
+        {
+            var path = "EFH/files.efh";
+            var stream = System.IO.File.OpenRead(path);
+            return new Microsoft.AspNetCore.Mvc.FileStreamResult(stream, "application/octet-stream")
+            {
+                FileDownloadName = "files.efh"
+            };
+        } 
+        [HttpPost]
+        [Route("addfile")]
+        public IActionResult Upload(IFormFile file)
+        {
+           
+             using (Stream fileStream = new FileStream(@"EFH/archive/" + file.FileName, FileMode.Create)) {
+                    file.CopyToAsync(fileStream);
+                }
+           return Ok("File Recieved " + file.FileName);
+        }
+
+        [HttpPost("upload", Name = "upload")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UploadFile(
+         IFormFile file,
+         CancellationToken cancellationToken)
+        {
+            if (CheckIfExcelFile(file))
+            {
+                await WriteFile(file);
+            }
+            else
+            {
+                return BadRequest(new { message = "Invalid file extension" });
+            }
+
+            return Ok();
+        }  
+
+        private bool CheckIfExcelFile(IFormFile file)
+        {
+           
+            return false; // Change the extension based on your need
+        }
+
+        private async Task<bool> WriteFile(IFormFile file)
+        {
+            bool isSaveSuccess = false;
+            string fileName;
+            try
+            {
+                var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
+                fileName = DateTime.Now.Ticks + extension; //Create a new Name for the file due to security reasons.
+
+                var pathBuilt = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\files");
+
+                if (!Directory.Exists(pathBuilt))
+                {
+                    Directory.CreateDirectory(pathBuilt);
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\files",
+                   fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                isSaveSuccess = true;
+            }
+            catch (Exception e)
+            {
+               //log error
+            }
+
+            return isSaveSuccess;
+        }
     }
 }

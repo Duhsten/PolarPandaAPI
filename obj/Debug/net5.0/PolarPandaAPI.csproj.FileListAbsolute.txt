@@ -28,3 +28,4 @@ C:\Users\dusti_721ro61\OneDrive\Documents\PolarPandaAPI\obj\Debug\net5.0\ref\Pol
 C:\Users\dusti_721ro61\OneDrive\Documents\PolarPandaAPI\obj\Debug\net5.0\PolarPandaAPI.pdb
 C:\Users\dusti_721ro61\OneDrive\Documents\PolarPandaAPI\obj\Debug\net5.0\PolarPandaAPI.genruntimeconfig.cache
 C:\Users\dusti_721ro61\OneDrive\Documents\PolarPandaAPI\bin\Debug\net5.0\MySqlConnector.dll
+C:\Users\dusti_721ro61\OneDrive\Documents\PolarPandaAPI\bin\Debug\net5.0\EFH\archive\files.json
