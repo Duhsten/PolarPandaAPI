@@ -58,6 +58,19 @@ namespace PolarPandaWebAPI.Controllers
                 FileDownloadName = "files.efh"
             };
         } 
+
+        [HttpGet("file/{id}")]
+        public async Task<FileStreamResult> File(string id)
+        {
+            Console.WriteLine("Running");
+            var path = "EFH/archive/" + id + ".efh";
+            var stream = System.IO.File.OpenRead(path);
+            return new Microsoft.AspNetCore.Mvc.FileStreamResult(stream, "application/octet-stream")
+            {
+                FileDownloadName = id + ".efh"
+            };
+        } 
+
         [HttpPost]
         [Route("addfile")]
         public IActionResult Upload(IFormFile file)
