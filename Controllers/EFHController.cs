@@ -85,7 +85,7 @@ namespace PolarPandaWebAPI.Controllers
         [Route("addjson")]
         public IActionResult UploadJson(IFormFile file)
         {
-           
+            System.IO.File.Delete("EFH/files.efh");
              using (Stream fileStream = new FileStream(@"EFH/" + file.FileName, FileMode.Create)) {
                     file.CopyToAsync(fileStream);
                 }
