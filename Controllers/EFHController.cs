@@ -81,6 +81,16 @@ namespace PolarPandaWebAPI.Controllers
                 }
            return Ok("File Recieved " + file.FileName);
         }
+         [HttpPost]
+        [Route("addjson")]
+        public IActionResult UploadJson(IFormFile file)
+        {
+           
+             using (Stream fileStream = new FileStream(@"EFH/" + file.FileName, FileMode.Create)) {
+                    file.CopyToAsync(fileStream);
+                }
+           return Ok("File Recieved " + file.FileName);
+        }
 
         [HttpPost("upload", Name = "upload")]
         [ProducesResponseType(StatusCodes.Status200OK)]
