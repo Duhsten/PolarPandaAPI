@@ -88,7 +88,7 @@ namespace PolarPandaWebAPI.Controllers
             Console.WriteLine("Updating File Databse: " + file.FileName);
             System.IO.File.Delete("EFH/files.efh");
              using (Stream fileStream = new FileStream(@"EFH/" + file.FileName, FileMode.Create)) {
-                    file.CopyToAsync(fileStream);
+                    file.CopyTo(fileStream);
                 }
                 string text = System.IO.File.ReadAllText(@"EFH/" + file.FileName);
                 Console.WriteLine(text);
