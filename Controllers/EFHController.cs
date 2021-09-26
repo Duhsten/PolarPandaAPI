@@ -77,7 +77,7 @@ namespace PolarPandaWebAPI.Controllers
         {
            
              using (Stream fileStream = new FileStream(@"EFH/archive/" + file.FileName, FileMode.Create)) {
-                    file.CopyToAsync(fileStream);
+                    file.CopyTo(fileStream);
                 }
            return Ok("File Recieved " + file.FileName);
         }
